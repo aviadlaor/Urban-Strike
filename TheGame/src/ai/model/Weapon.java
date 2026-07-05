@@ -42,10 +42,14 @@ public class Weapon {
         ammoInClip = Math.min(maxClipSize, ammoInClip + amount);
     }
 
+    private boolean powered = false;
+    public boolean isPowered()          { return powered; }
+    public void setPowered(boolean p)   { this.powered = p; }
+    public int getDamage()              { return powered ? damagePerShot * 2 : damagePerShot; }
+
     public boolean isReloading()    { return isReloading; }
     public boolean isFull()         { return ammoInClip >= maxClipSize; }
     public int getAmmo()            { return ammoInClip; }
     public int getMaxClipSize()     { return maxClipSize; }
-    public int getDamage()          { return damagePerShot; }
     public String getWeaponType()   { return weaponType; }
 }

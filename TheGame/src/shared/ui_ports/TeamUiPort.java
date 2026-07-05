@@ -35,4 +35,36 @@ public abstract class TeamUiPort {
     public abstract void addItem(int id, double x, double y, String type);
     public abstract void removeItem(int id);
     public abstract void showPickupMessage(String msg);
+
+    // --- US-08 Game Over / US-02 enemy hit feedback ---
+    public abstract void triggerGameOverScreen(int finalScore, ai.model.GameStats stats);
+    public abstract void triggerRestartGame();
+    public abstract void updateEnemyHealth(int enemyId, int healthPercent);
+
+    // --- Wave system / Victory ---
+    public abstract void updateWave(int wave, int totalWaves);
+    public abstract void triggerVictoryScreen(int finalScore, ai.model.GameStats stats);
+
+    // --- Cover ---
+    public abstract void updateCoverState(boolean inCover);
+
+    // --- Enemy fire feedback ---
+    public abstract void showEnemyAttack(int enemyId);
+
+    // --- Visual effects ---
+    public abstract void showEnemyHit(int enemyId, double enemyX, double enemyY);
+    public abstract void showEnemyDeath(int enemyId, double x, double y);
+    public abstract void setNightMode(boolean night);
+
+    // --- Killstreak + Wave ---
+    public abstract void showKillStreak(String message, int count);
+    public abstract void showWaveIncoming(int wave);
+
+    // --- Power Weapon ---
+    public abstract void updatePoweredState(boolean powered);
+
+    // --- Bob + Reload animation ---
+    public abstract void updateMovingState(boolean moving);
+    public abstract void updateReloadAnimation(double progress);
 }
+//check

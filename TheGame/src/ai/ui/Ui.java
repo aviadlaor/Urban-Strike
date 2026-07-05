@@ -33,12 +33,15 @@ public class Ui {
     private void createWindow() {
         JFrame frame = new JFrame("Urban Strike");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setResizable(false);
+        frame.setUndecorated(true);
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(new BorderLayout());
 
         gamePanel = new GamePanel(mainRouter, App.weaponRouter(), App.itemRouter());
         frame.add(gamePanel, BorderLayout.CENTER);
+
+        // US-08: let the backend flip the panel's game-over flag (gates the R key)
+        App.content().urbanStrikeBackend().setPanel(gamePanel);
 
         // Wire the UI port BEFORE setVisible so the very first native paint
         // event already has a renderer available (avoids black-flash on expose).
